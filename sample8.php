@@ -3,9 +3,9 @@
 header("Content-Type: text/html; charset=UTF-8");
 ini_set('display_errors', "On");
 
-	$dsn = "mysql:dbname=tt_65_99sv_coco_com;host=localhost";
-	$user = "tt-65.99sv-coco.com";
-	$password = "zH4dAB67";
+	$dsn = "ホスト";
+	$user = "ユーザ";
+	$password = "パス";
 	$pdo = new PDO($dsn,$user,$password);
 
 	$sql = "CREATE TABLE sample8"

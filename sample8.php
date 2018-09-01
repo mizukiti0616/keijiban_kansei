@@ -3,9 +3,9 @@
 header("Content-Type: text/html; charset=UTF-8");
 ini_set('display_errors', "On");
 
-	$dsn = "データベース名";
-	$user = "ユーザー名";
-	$password = "パスワード";
+	$dsn = "mysql:dbname=tt_65_99sv_coco_com;host=localhost";
+	$user = "tt-65.99sv-coco.com";
+	$password = "zH4dAB67";
 	$pdo = new PDO($dsn,$user,$password);
 
 	$sql = "CREATE TABLE sample8"
@@ -35,7 +35,7 @@ ini_set('display_errors', "On");
         
 	
         $DATETIME = new DateTime();
-	$DATETIME = $DATETIME->format('Y-m-d H:i:s'); //日時を変数に代入
+	$DATETIME = $DATETIME->format('Y-m-d H:i:s');
 	$edit = $_POST['edino2'];
 	$edit2 = $_POST['edino2'];
 	
@@ -67,7 +67,7 @@ ini_set('display_errors', "On");
 
 
 		
-	$sql = 'SELECT*FROM sample8 where id = :edit_id';　　　　　//最初に設定したパスワードを取り出す（編集用）
+	$sql = 'SELECT*FROM sample8 where id = :edit_id';
 	$stmt = $pdo -> prepare($sql);
 	$stmt -> bindParam(':edit_id', $_POST['edino2'], PDO::PARAM_INT);
 	$stmt -> execute();
@@ -77,7 +77,7 @@ ini_set('display_errors', "On");
 	
 	
 		
-	$sql = 'SELECT*FROM sample8 where id = :delete_id';	//最初に設定したパスワードを取り出す（削除用）
+	$sql = 'SELECT*FROM sample8 where id = :delete_id';
 	$stmt = $pdo -> prepare($sql);
 	$stmt -> bindParam(':delete_id', $_POST['delete'], PDO::PARAM_INT);
 	$stmt -> execute();
@@ -86,7 +86,7 @@ ini_set('display_errors', "On");
 	
 
 
-		if ($_POST['edino'])  {				//編集実行時にフォームに表示する用
+		if ($_POST['edino'])  {
 	$sql = 'SELECT*FROM sample8 where id = :normal_id';
 	$stmt = $pdo -> prepare($sql);
 	$stmt -> bindParam(':normal_id', $_POST['edino'], PDO::PARAM_INT);
@@ -101,7 +101,7 @@ ini_set('display_errors', "On");
 	
 
 
-	if ($_POST['delete'] && $del_target_pass == $_POST['delkey'])  {　　　//削除
+	if ($_POST['delete'] && $del_target_pass == $_POST['delkey'])  {
 	$sql = 'DELETE FROM sample8 where id = :delete_id';
 	$stmt = $pdo -> prepare($sql);
 	$stmt -> bindParam(':delete_id', $_POST['delete'], PDO::PARAM_INT);
@@ -112,7 +112,7 @@ ini_set('display_errors', "On");
 	}
 	
 	if ( $_POST['pass'] == $edit3  && $_POST['mode'] == 'editmode') {
-	$sql = 'update sample8 set name =:name, comment =:comment   where id = :value';　//編集
+	$sql = 'update sample8 set name =:name, comment =:comment   where id = :value';
 	$stmt = $pdo -> prepare($sql);
 	$stmt->bindParam(':name', $_POST['name'], PDO::PARAM_STR);
 	$stmt->bindParam(':comment', $_POST['comment'], PDO::PARAM_STR);
